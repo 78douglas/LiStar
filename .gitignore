@@ -105,3 +105,4 @@ web_modules/
 # Rollup.js default build output
 dist/
 build/
+.vercel
