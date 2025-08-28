@@ -1,4 +1,4 @@
-# 💕 App Gamificado para Casais
+# 💕 LiStar - App Gamificado para Casais
 
 Um aplicativo web gamificado onde marido e esposa podem gerenciar tarefas domésticas de forma divertida e recompensadora!
 
@@ -42,8 +42,8 @@ Um aplicativo web gamificado onde marido e esposa podem gerenciar tarefas domés
 
 1. **Clone o repositório**
 ```bash
-git clone https://github.com/seu-usuario/gamified-couples-app.git
-cd gamified-couples-app
+git clone https://github.com/seu-usuario/LiStar.git
+cd LiStar
 ```
 
 2. **Instale as dependências**

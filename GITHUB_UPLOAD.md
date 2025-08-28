@@ -9,8 +9,8 @@
 ### Passo 2: Criar Repositório
 1. Abra o GitHub Desktop
 2. Clique em "Create a New Repository on your hard drive"
-3. Nome: `gamified-couples-app`
-4. Descrição: `Um aplicativo gamificado para gerenciamento de tarefas de casais`
+3. Nome: `LiStar`
+4. Descrição: `Aplicativo LiStar - App gamificado para gerenciamento de tarefas de casais`
 5. Escolha esta pasta como localização: `C:\Users\Douglas\OneDrive\Imagens\app`
 6. Marque "Initialize this repository with a README" (já temos um)
 7. Clique em "Create Repository"
@@ -30,13 +30,13 @@ Abra o Prompt de Comando na pasta do seu projeto e execute:
 ```bash
 git init
 git add .
-git commit -m "Commit inicial: App Gamificado para Casais"
+git commit -m "Commit inicial: LiStar - App Gamificado para Casais"
 ```
 
 ### Passo 3: Criar Repositório no GitHub
 1. Vá para https://github.com/new
-2. Nome do repositório: `gamified-couples-app`
-3. Descrição: `Um aplicativo gamificado para gerenciamento de tarefas de casais`
+2. Nome do repositório: `LiStar`
+3. Descrição: `Aplicativo LiStar - App gamificado para gerenciamento de tarefas de casais`
 4. Escolha Público ou Privado
 5. Não inicialize com README (já temos um)
 6. Clique em "Create repository"
@@ -45,7 +45,7 @@ git commit -m "Commit inicial: App Gamificado para Casais"
 Substitua `SEU_USUARIO` pelo seu nome de usuário do GitHub:
 ```bash
 git branch -M main
-git remote add origin https://github.com/SEU_USUARIO/gamified-couples-app.git
+git remote add origin https://github.com/SEU_USUARIO/LiStar.git
 git push -u origin main
 ```
 
@@ -53,15 +53,15 @@ git push -u origin main
 
 ### Passo 1: Criar Repositório
 1. Vá para https://github.com/new
-2. Nome do repositório: `gamified-couples-app`
-3. Descrição: `Um aplicativo gamificado para gerenciamento de tarefas de casais`
+2. Nome do repositório: `LiStar`
+3. Descrição: `Aplicativo LiStar - App gamificado para gerenciamento de tarefas de casais`
 4. Escolha Público ou Privado
 5. Clique em "Create repository"
 
 ### Passo 2: Fazer Upload dos Arquivos
 1. Clique em "uploading an existing file"
 2. Arraste todos os arquivos do seu projeto para a área de upload
-3. Mensagem do commit: "Commit inicial: App Gamificado para Casais"
+3. Mensagem do commit: "Commit inicial: LiStar - App Gamificado para Casais"
 4. Clique em "Commit new files"
 
 ## 📁 Arquivos Prontos para Upload
@@ -94,12 +94,12 @@ Após fazer o upload:
 6. Pasta: "/ (root)"
 7. Clique em "Save"
 
-Seu app estará disponível em: `https://SEU_USUARIO.github.io/gamified-couples-app`
+Seu app estará disponível em: `https://SEU_USUARIO.github.io/LiStar`
 
 ## 🔗 Estrutura da URL do Repositório
 
 Seu repositório estará disponível em:
-`https://github.com/SEU_USUARIO/gamified-couples-app`
+`https://github.com/SEU_USUARIO/LiStar`
 
 Substitua `SEU_USUARIO` pelo seu nome de usuário real do GitHub.
 
