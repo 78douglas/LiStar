@@ -28,18 +28,22 @@ export default function RewardManager() {
   });
 
   const currentUser = state.users.find(u => u.id === user?.id);
-  const spouseUser = state.users.find(u => u.id !== user?.id);
+  const spouseUser = currentUser?.partnerId ? state.users.find(u => u.id === currentUser.partnerId) : null;
 
   // Filter rewards
   const myRewards = state.rewards.filter(reward => reward.createdBy === user?.id);
-  const availableRewards = state.rewards.filter(reward => 
-    reward.createdBy !== user?.id && 
-    (currentUser?.starBalance || 0) >= reward.starCost
-  );
-  const unavailableRewards = state.rewards.filter(reward => 
-    reward.createdBy !== user?.id && 
-    (currentUser?.starBalance || 0) < reward.starCost
-  );
+  const availableRewards = state.rewards.filter(reward => {
+    const isCreatedByPartner = spouseUser && reward.createdBy === spouseUser.id;
+    const hasStarsToRedeem = (currentUser?.starBalance || 0) >= reward.starCost;
+    const notAlreadyRedeemed = !state.redemptions.some(redemption => redemption.rewardId === reward.id);
+    return isCreatedByPartner && hasStarsToRedeem && notAlreadyRedeemed;
+  });
+  const unavailableRewards = state.rewards.filter(reward => {
+    const isCreatedByPartner = spouseUser && reward.createdBy === spouseUser.id;
+    const notEnoughStars = (currentUser?.starBalance || 0) < reward.starCost;
+    const alreadyRedeemed = state.redemptions.some(redemption => redemption.rewardId === reward.id);
+    return isCreatedByPartner && (notEnoughStars || alreadyRedeemed);
+  });
 
   // Get redemptions
   const myRedemptions = state.redemptions.filter(r => r.redeemedBy === user?.id);
@@ -250,7 +254,7 @@ export default function RewardManager() {
               {!editingReward && (
                 <div className="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
                   <p className="text-sm text-purple-700 dark:text-purple-300">
-                    Esta recompensa poderá ser resgatada pelo seu parceiro ({spouseUser?.role === 'husband' ? 'marido' : 'esposa'}).
+                    Esta recompensa poderá ser resgatada pelo seu parceiro ({spouseUser?.role === 'marido' ? 'marido' : 'esposa'}).
                   </p>
                 </div>
               )}
@@ -418,12 +422,20 @@ export default function RewardManager() {
                     </p>
                     
                     <div className="flex justify-between items-center">
-                      <span className="text-sm text-gray-500 dark:text-gray-400">
-                        Estrelas insuficientes
-                      </span>
-                      <span className="text-sm text-red-600 dark:text-red-400">
-                        Precisa de {reward.starCost - (currentUser?.starBalance || 0)} estrelas
-                      </span>
+                      {state.redemptions.some(redemption => redemption.rewardId === reward.id) ? (
+                        <span className="text-sm text-purple-600 dark:text-purple-400 font-medium">
+                          Já resgatada
+                        </span>
+                      ) : (
+                        <span className="text-sm text-gray-500 dark:text-gray-400">
+                          Estrelas insuficientes
+                        </span>
+                      )}
+                      {!state.redemptions.some(redemption => redemption.rewardId === reward.id) && (
+                        <span className="text-sm text-red-600 dark:text-red-400">
+                          Precisa de {reward.starCost - (currentUser?.starBalance || 0)} estrelas
+                        </span>
+                      )}
                     </div>
                   </div>
                 ))}

@@ -1,0 +1,130 @@
+/* Tema Azul */
+.theme-blue {
+  --bg-primary: #eff6ff;
+  --bg-secondary: #dbeafe;
+  --bg-accent: #3b82f6;
+  --text-primary: #1e40af;
+  --text-secondary: #3730a3;
+  --border-color: #93c5fd;
+}
+
+.theme-blue .bg-gray-50 {
+  background-color: var(--bg-primary) !important;
+}
+
+.theme-blue .bg-white {
+  background-color: var(--bg-secondary) !important;
+}
+
+.theme-blue .text-gray-900 {
+  color: var(--text-primary) !important;
+}
+
+.theme-blue .text-gray-600 {
+  color: var(--text-secondary) !important;
+}
+
+.theme-blue .border-gray-200 {
+  border-color: var(--border-color) !important;
+}
+
+.theme-blue .bg-pink-500 {
+  background-color: var(--bg-accent) !important;
+}
+
+/* Tema Verde */
+.theme-green {
+  --bg-primary: #f0fdf4;
+  --bg-secondary: #dcfce7;
+  --bg-accent: #22c55e;
+  --text-primary: #15803d;
+  --text-secondary: #166534;
+  --border-color: #86efac;
+}
+
+.theme-green .bg-gray-50 {
+  background-color: var(--bg-primary) !important;
+}
+
+.theme-green .bg-white {
+  background-color: var(--bg-secondary) !important;
+}
+
+.theme-green .text-gray-900 {
+  color: var(--text-primary) !important;
+}
+
+.theme-green .text-gray-600 {
+  color: var(--text-secondary) !important;
+}
+
+.theme-green .border-gray-200 {
+  border-color: var(--border-color) !important;
+}
+
+.theme-green .bg-pink-500 {
+  background-color: var(--bg-accent) !important;
+}
+
+/* Tema Roxo */
+.theme-purple {
+  --bg-primary: #faf5ff;
+  --bg-secondary: #f3e8ff;
+  --bg-accent: #a855f7;
+  --text-primary: #7c3aed;
+  --text-secondary: #6b21a8;
+  --border-color: #c4b5fd;
+}
+
+.theme-purple .bg-gray-50 {
+  background-color: var(--bg-primary) !important;
+}
+
+.theme-purple .bg-white {
+  background-color: var(--bg-secondary) !important;
+}
+
+.theme-purple .text-gray-900 {
+  color: var(--text-primary) !important;
+}
+
+.theme-purple .text-gray-600 {
+  color: var(--text-secondary) !important;
+}
+
+.theme-purple .border-gray-200 {
+  border-color: var(--border-color) !important;
+}
+
+.theme-purple .bg-pink-500 {
+  background-color: var(--bg-accent) !important;
+}
+
+/* Aplicar aos cartões e elementos */
+.theme-blue .card,
+.theme-green .card,
+.theme-purple .card {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+}
+
+/* Botões primários com temas */
+.theme-blue .btn-primary {
+  background-color: var(--bg-accent) !important;
+}
+
+.theme-green .btn-primary {
+  background-color: var(--bg-accent) !important;
+}
+
+.theme-purple .btn-primary {
+  background-color: var(--bg-accent) !important;
+}
+
+/* Headers com temas */
+.theme-blue header,
+.theme-green header,
+.theme-purple header {
+  background-color: var(--bg-secondary) !important;
+  border-color: var(--border-color) !important;
+}

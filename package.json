@@ -1,17 +1,44 @@
 {
   "name": "listar",
-  "private": true,
-  "version": "0.0.0",
+  "private": false,
+  "version": "1.0.0",
   "type": "module",
-  "description": "Um aplicativo gamificado para gerenciamento de tarefas de casais com interface em português brasileiro",
-  "keywords": ["react", "typescript", "vite", "tailwind", "casais", "gamificação", "tarefas", "recompensas", "português"],
-  "author": "Your Name",
+  "description": "App gamificado para casais gerenciarem tarefas domésticas de forma divertida e colaborativa com sistema de pontos e recompensas",
+  "keywords": [
+    "react",
+    "typescript",
+    "vite",
+    "tailwind",
+    "supabase",
+    "casais",
+    "gamificação",
+    "tarefas",
+    "recompensas",
+    "português",
+    "brasil",
+    "couples",
+    "tasks",
+    "rewards",
+    "gamification"
+  ],
+  "author": {
+    "name": "Douglas",
+    "email": "78douglas@gmail.com",
+    "url": "https://github.com/78douglas"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/YOUR_USERNAME/LiStar.git"
+    "url": "https://github.com/78douglas/LiStar.git"
   },
-  "homepage": "https://YOUR_USERNAME.github.io/LiStar",
+  "homepage": "https://listar-tau.vercel.app",
+  "bugs": {
+    "url": "https://github.com/78douglas/LiStar/issues"
+  },
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/78douglas"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -21,10 +48,11 @@
     "deploy:build": "npm run build"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.56.0",
+    "lucide-react": "^0.263.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.14.2",
-    "lucide-react": "^0.263.1"
+    "react-router-dom": "^6.14.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

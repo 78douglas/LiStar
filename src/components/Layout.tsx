@@ -11,7 +11,9 @@ import {
   Sun, 
   Moon,
   RotateCcw,
-  Star
+  Star,
+  Settings,
+  History
 } from 'lucide-react';
 
 export default function Layout({ children }: { children: React.ReactNode }) {
@@ -20,7 +22,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const location = useLocation();
 
   const currentUser = state.users.find(u => u.id === user?.id);
-  const spouseUser = state.users.find(u => u.id !== user?.id);
+  const spouseUser = currentUser?.partnerId ? state.users.find(u => u.id === currentUser.partnerId) : null;
 
   const toggleTheme = () => {
     dispatch({ 
@@ -38,11 +40,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   const navItems = [
     { path: '/', icon: Home, label: 'Dashboard' },
     { path: '/tasks', icon: CheckSquare, label: 'Tarefas' },
-    { path: '/rewards', icon: Gift, label: 'Recompensas' }
+    { path: '/rewards', icon: Gift, label: 'Recompensas' },
+    { path: '/history', icon: History, label: 'Histórico' },
+    { path: '/settings', icon: Settings, label: 'Configurações' }
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300 pb-20">
       {/* Header */}
       <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -51,30 +55,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             <div className="flex items-center space-x-3">
               <Heart className="w-8 h-8 text-pink-500" fill="currentColor" />
               <span className="text-xl font-bold text-gray-900 dark:text-white">
-                App Casais
+                LiStar
               </span>
             </div>
-
-            {/* Navigation */}
-            <nav className="hidden md:flex space-x-4">
-              {navItems.map((item) => {
-                const isActive = location.pathname === item.path;
-                return (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    className={`flex items-center space-x-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
-                      isActive
-                        ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300'
-                        : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700'
-                    }`}
-                  >
-                    <item.icon className="w-5 h-5" />
-                    <span>{item.label}</span>
-                  </Link>
-                );
-              })}
-            </nav>
 
             {/* User info and actions */}
             <div className="flex items-center space-x-4">
@@ -98,23 +81,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
                 )}
               </button>
 
-              {/* Reset button */}
-              <button
-                onClick={handleReset}
-                className="p-2 rounded-md text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
-                title="Resetar aplicação"
-              >
-                <RotateCcw className="w-5 h-5" />
-              </button>
-
               {/* User menu */}
               <div className="flex items-center space-x-3">
                 <div className="text-right">
                   <p className="text-sm font-medium text-gray-900 dark:text-white">
-                    {user?.role === 'husband' ? 'Marido' : 'Esposa'}
-                  </p>
-                  <p className="text-xs text-gray-500 dark:text-gray-400">
-                    {user?.username}
+                    {currentUser?.name || user?.username}
                   </p>
                 </div>
                 <button
@@ -127,35 +98,35 @@ export default function Layout({ children }: { children: React.ReactNode }) {
             </div>
           </div>
         </div>
-
-        {/* Mobile navigation */}
-        <div className="md:hidden border-t border-gray-200 dark:border-gray-700">
-          <div className="flex">
-            {navItems.map((item) => {
-              const isActive = location.pathname === item.path;
-              return (
-                <Link
-                  key={item.path}
-                  to={item.path}
-                  className={`flex-1 flex flex-col items-center py-3 text-xs font-medium transition-colors ${
-                    isActive
-                      ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300'
-                      : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
-                  }`}
-                >
-                  <item.icon className="w-5 h-5 mb-1" />
-                  <span>{item.label}</span>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
       </header>
 
       {/* Main content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {children}
       </main>
+
+      {/* Bottom Navigation */}
+      <nav className="fixed bottom-0 left-0 right-0 bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 z-50">
+        <div className="flex">
+          {navItems.map((item) => {
+            const isActive = location.pathname === item.path;
+            return (
+              <Link
+                key={item.path}
+                to={item.path}
+                className={`flex-1 flex flex-col items-center py-3 text-xs font-medium transition-colors ${
+                  isActive
+                    ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300'
+                    : 'text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white'
+                }`}
+              >
+                <item.icon className="w-5 h-5 mb-1" />
+                <span>{item.label}</span>
+              </Link>
+            );
+          })}
+        </div>
+      </nav>
     </div>
   );
 }

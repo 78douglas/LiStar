@@ -23,11 +23,12 @@ export default function TaskManager() {
   const [rating, setRating] = useState(0);
   const [formData, setFormData] = useState({
     title: '',
-    description: ''
+    description: '',
+    starValue: 1
   });
 
   const currentUser = state.users.find(u => u.id === user?.id);
-  const spouseUser = state.users.find(u => u.id !== user?.id);
+  const spouseUser = currentUser?.partnerId ? state.users.find(u => u.id === currentUser.partnerId) : null;
 
   // Filter tasks
   const myTasks = state.tasks.filter(task => task.assignedTo === user?.id);
@@ -42,13 +43,14 @@ export default function TaskManager() {
       payload: {
         title: formData.title,
         description: formData.description,
+        starValue: formData.starValue,
         createdBy: user!.id,
         assignedTo: spouseUser.id,
         status: 'pending'
       }
     });
 
-    setFormData({ title: '', description: '' });
+    setFormData({ title: '', description: '', starValue: 1 });
     setShowCreateForm(false);
   };
 
@@ -62,13 +64,14 @@ export default function TaskManager() {
         id: editingTask.id,
         updates: {
           title: formData.title,
-          description: formData.description
+          description: formData.description,
+          starValue: formData.starValue
         }
       }
     });
 
     setEditingTask(null);
-    setFormData({ title: '', description: '' });
+    setFormData({ title: '', description: '', starValue: 1 });
   };
 
   const handleDeleteTask = (taskId: string) => {
@@ -114,7 +117,8 @@ export default function TaskManager() {
     setEditingTask(task);
     setFormData({
       title: task.title,
-      description: task.description
+      description: task.description,
+      starValue: task.starValue
     });
   };
 
@@ -145,6 +149,22 @@ export default function TaskManager() {
     return task.createdBy === user?.id && task.status === 'completed';
   };
 
+  const getStarsEarned = (task: Task) => {
+    let totalStars = 0;
+    
+    // 5 estrelas automáticas por conclusão
+    if (task.status === 'completed' || task.status === 'evaluated') {
+      totalStars += 5;
+    }
+    
+    // Estrelas adicionais pela avaliação (1-5)
+    if (task.status === 'evaluated' && task.rating) {
+      totalStars += task.rating;
+    }
+    
+    return totalStars;
+  };
+
   return (
     <div className="space-y-6">
       {/* Header */}
@@ -173,7 +193,7 @@ export default function TaskManager() {
                 onClick={() => {
                   setShowCreateForm(false);
                   setEditingTask(null);
-                  setFormData({ title: '', description: '' });
+                  setFormData({ title: '', description: '', starValue: 1 });
                 }}
                 className="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300"
               >
@@ -208,10 +228,28 @@ export default function TaskManager() {
                 />
               </div>
 
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                  Valor em Estrelas
+                </label>
+                <input
+                  type="number"
+                  min="1"
+                  value={formData.starValue}
+                  onChange={(e) => setFormData({ ...formData, starValue: parseInt(e.target.value) || 1 })}
+                  className="input"
+                  required
+                  placeholder="Quantas estrelas vale esta tarefa?"
+                />
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">
+                  Conclusão: 5 estrelas automáticas + 1-5 pela avaliação
+                </p>
+              </div>
+
               {!editingTask && (
                 <div className="bg-blue-50 dark:bg-blue-900/20 p-3 rounded-lg">
                   <p className="text-sm text-blue-700 dark:text-blue-300">
-                    Esta tarefa será automaticamente atribuída ao seu parceiro ({spouseUser?.role === 'husband' ? 'marido' : 'esposa'}).
+                    Esta tarefa será automaticamente atribuída ao seu parceiro ({spouseUser?.role === 'marido' ? 'marido' : 'esposa'}).
                   </p>
                 </div>
               )}
@@ -229,7 +267,7 @@ export default function TaskManager() {
                   onClick={() => {
                     setShowCreateForm(false);
                     setEditingTask(null);
-                    setFormData({ title: '', description: '' });
+                    setFormData({ title: '', description: '', starValue: 1 });
                   }}
                   className="btn-secondary"
                 >
@@ -267,6 +305,12 @@ export default function TaskManager() {
               <p className="text-sm text-gray-600 dark:text-gray-400">
                 {evaluatingTask.description}
               </p>
+              <div className="flex items-center gap-2 mt-2">
+                <Star className="w-4 h-4 text-yellow-500" />
+                <span className="text-sm font-medium text-yellow-600 dark:text-yellow-400">
+                  Vale {evaluatingTask.starValue} estrelas
+                </span>
+              </div>
             </div>
 
             <form onSubmit={handleEvaluateTask} className="space-y-4">
@@ -280,12 +324,19 @@ export default function TaskManager() {
                       key={star}
                       type="button"
                       onClick={() => setRating(star)}
-                      className={`star text-2xl ${star <= rating ? 'filled' : ''}`}
+                      className={`text-2xl transition-colors ${
+                        star <= rating ? 'text-yellow-500' : 'text-gray-300'
+                      } hover:text-yellow-400`}
                     >
                       <Star className="w-8 h-8" fill={star <= rating ? 'currentColor' : 'none'} />
                     </button>
                   ))}
                 </div>
+                {rating > 0 && (
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mt-2">
+                    Estrelas adicionais pela avaliação: {rating} ⭐ (+ 5 automáticas = {5 + rating} total)
+                  </p>
+                )}
               </div>
 
               <div className="flex space-x-3">
@@ -342,6 +393,20 @@ export default function TaskManager() {
                 <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
                   {task.description}
                 </p>
+                
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2">
+                    <Star className="w-4 h-4 text-yellow-500" />
+                    <span className="text-sm font-medium text-yellow-600 dark:text-yellow-400">
+                      Vale {task.starValue} estrelas
+                    </span>
+                  </div>
+                  {task.status === 'evaluated' && task.rating && (
+                    <div className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-2 py-1 rounded-full text-xs font-semibold">
+                      +{getStarsEarned(task)} ⭐ ganhas
+                    </div>
+                  )}
+                </div>
                 
                 <div className="flex justify-between items-center text-sm text-gray-500 dark:text-gray-400 mb-3">
                   <span>Criada em {formatDate(task.createdAt)}</span>
@@ -400,6 +465,20 @@ export default function TaskManager() {
                 <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
                   {task.description}
                 </p>
+                
+                <div className="flex items-center justify-between mb-3">
+                  <div className="flex items-center gap-2">
+                    <Star className="w-4 h-4 text-yellow-500" />
+                    <span className="text-sm font-medium text-yellow-600 dark:text-yellow-400">
+                      Vale {task.starValue} estrelas
+                    </span>
+                  </div>
+                  {task.status === 'evaluated' && task.rating && (
+                    <div className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 px-2 py-1 rounded-full text-xs font-semibold">
+                      +{getStarsEarned(task)} ⭐ ganhas
+                    </div>
+                  )}
+                </div>
                 
                 <div className="flex justify-between items-center text-sm text-gray-500 dark:text-gray-400 mb-3">
                   <span>Criada em {formatDate(task.createdAt)}</span>
