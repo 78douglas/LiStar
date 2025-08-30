@@ -18,11 +18,10 @@
 
 ---
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/3f5849fd-2dbf-41dd-9107-9be779743274" width="200"/>
-  <img src="https://github.com/user-attachments/assets/eeb4bcab-ac45-4737-b571-b49943de1fbc" width="200"/>
-  <img src="https://github.com/user-attachments/assets/b8160106-4a32-497d-81b5-83178d2a41e4" width="200"/>
+  <img src="https://github.com/user-attachments/assets/3f5849fd-2dbf-41dd-9107-9be779743274" height="400"/>
+  <img src="https://github.com/user-attachments/assets/eeb4bcab-ac45-4737-b571-b49943de1fbc" height="400"/>
+  <img src="https://github.com/user-attachments/assets/b8160106-4a32-497d-81b5-83178d2a41e4" height="400"/>
 </p>
-
 
 
 ## 📱 Sobre o LiStar
