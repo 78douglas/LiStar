@@ -17,20 +17,11 @@
 </div>
 
 ---
-body {
-  display: flex; /* 1. Ativa o Flexbox no body */
-  justify-content: center; /* 2. Centraliza os itens no eixo horizontal (horizontalmente) */
-  align-items: center; /* 3. Centraliza os itens no eixo vertical (verticalmente) */
-  height: 100vh; /* 4. Garante que o body ocupe a altura total da tela */
-  margin: 0; /* 5. Remove margens padrão do body */
-}
-<body>
-  <div class="caixa-centralizada">
-    <img src="https://github.com/user-attachments/assets/3f5849fd-2dbf-41dd-9107-9be779743274" alt="Aplicativo 1" style="width: 250px; height: auto; border-radius: 12px;" />
-  <img src="https://github.com/user-attachments/assets/eeb4bcab-ac45-4737-b571-b49943de1fbc" alt="Aplicativo 2" style="width: 250px; height: auto; border-radius: 12px;" />
-  <img src="https://github.com/user-attachments/assets/b8160106-4a32-497d-81b5-83178d2a41e4" alt="Aplicativo 3" style="width: 250px; height: auto; border-radius: 12px;" />
-  </div>
-</body>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/3f5849fd-2dbf-41dd-9107-9be779743274" width="200"/>
+  <img src="https://github.com/user-attachments/assets/eeb4bcab-ac45-4737-b571-b49943de1fbc" width="200"/>
+  <img src="https://github.com/user-attachments/assets/b8160106-4a32-497d-81b5-83178d2a41e4" width="200"/>
+</p>
 
 
 
