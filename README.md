@@ -17,11 +17,16 @@
 </div>
 
 ---
+<img width="476" height="879" alt="image" src="https://github.com/user-attachments/assets/3f5849fd-2dbf-41dd-9107-9be779743274" />
+<img width="485" height="874" alt="image" src="https://github.com/user-attachments/assets/eeb4bcab-ac45-4737-b571-b49943de1fbc" />
+<img width="473" height="885" alt="image" src="https://github.com/user-attachments/assets/b8160106-4a32-497d-81b5-83178d2a41e4" />
+
+
 
 ## 📱 Sobre o LiStar
 
 O **LiStar** é um aplicativo web gamificado que ajuda casais a gerenciar tarefas domésticas de forma divertida e colaborativa. Com um sistema de pontos e recompensas, as tarefas chatas se tornam desafios divertidos!
-<img width="181" height="108" alt="image" src="https://github.com/user-attachments/assets/ad8d0b22-1e9f-4677-8032-5d510d5c6c9c" />
+
 
 ### ✨ Funcionalidades Principais
 
