@@ -17,10 +17,10 @@
 </div>
 
 ---
-<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
-    <img src="https://github.com/user-attachments/assets/3f5849fd-2dbf-41dd-9107-9be779743274" style="width: 25%; height: auto; max-width: 200px; border-radius: 8px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);" alt="Aplicativo 1" />
-    <img src="https://github.com/user-attachments/assets/eeb4bcab-ac45-4737-b571-b49943de1fbc" style="width: 25%; height: auto; max-width: 200px; border-radius: 8px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);" alt="Aplicativo 2" />
-    <img src="https://github.com/user-attachments/assets/b8160106-4a32-497d-81b5-83178d2a41e4" style="width: 25%; height: auto; max-width: 200px; border-radius: 8px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);" alt="Aplicativo 3" />
+<div style="display: flex; justify-content: center; align-items: flex-start; gap: 10px;">
+  <img src="https://github.com/user-attachments/assets/3f5849fd-2dbf-41dd-9107-9be779743274" alt="Aplicativo 1" style="width: 250px; height: auto; border-radius: 12px;" />
+  <img src="https://github.com/user-attachments/assets/eeb4bcab-ac45-4737-b571-b49943de1fbc" alt="Aplicativo 2" style="width: 250px; height: auto; border-radius: 12px;" />
+  <img src="https://github.com/user-attachments/assets/b8160106-4a32-497d-81b5-83178d2a41e4" alt="Aplicativo 3" style="width: 250px; height: auto; border-radius: 12px;" />
 </div>
 
 
