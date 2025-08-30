@@ -17,9 +17,11 @@
 </div>
 
 ---
-<img width="476" height="879" alt="image" src="https://github.com/user-attachments/assets/3f5849fd-2dbf-41dd-9107-9be779743274" />
-<img width="485" height="874" alt="image" src="https://github.com/user-attachments/assets/eeb4bcab-ac45-4737-b571-b49943de1fbc" />
-<img width="473" height="885" alt="image" src="https://github.com/user-attachments/assets/b8160106-4a32-497d-81b5-83178d2a41e4" />
+<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+    <img src="https://github.com/user-attachments/assets/3f5849fd-2dbf-41dd-9107-9be779743274" style="width: 25%; height: auto; max-width: 200px; border-radius: 8px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);" alt="Aplicativo 1" />
+    <img src="https://github.com/user-attachments/assets/eeb4bcab-ac45-4737-b571-b49943de1fbc" style="width: 25%; height: auto; max-width: 200px; border-radius: 8px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);" alt="Aplicativo 2" />
+    <img src="https://github.com/user-attachments/assets/b8160106-4a32-497d-81b5-83178d2a41e4" style="width: 25%; height: auto; max-width: 200px; border-radius: 8px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);" alt="Aplicativo 3" />
+</div>
 
 
 
