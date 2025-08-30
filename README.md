@@ -21,6 +21,7 @@
 ## 📱 Sobre o LiStar
 
 O **LiStar** é um aplicativo web gamificado que ajuda casais a gerenciar tarefas domésticas de forma divertida e colaborativa. Com um sistema de pontos e recompensas, as tarefas chatas se tornam desafios divertidos!
+<img width="181" height="108" alt="image" src="https://github.com/user-attachments/assets/ad8d0b22-1e9f-4677-8032-5d510d5c6c9c" />
 
 ### ✨ Funcionalidades Principais
 
